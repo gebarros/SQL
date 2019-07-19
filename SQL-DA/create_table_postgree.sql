@@ -10,7 +10,7 @@ INSERT INTO test (id, start_time, end_time) VALUES (3, '13:00', '14:00');
 INSERT INTO test (id, start_time, end_time) VALUES (4, '15:00', '16:00');
 
 
-/*Query*/
+/*Query: Bus problem*/
 SELECT MAX(min_room)
 FROM (SELECT COUNT(*) min_room
      FROM test t
