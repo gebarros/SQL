@@ -1,0 +1,52 @@
+SELECT name, salary, months
+FROM Employee
+WHERE salary > 2000 AND months < 10
+ORDER BY employee_id;
+
+/*Calculating Manhattan Distance*/
+SELECT ROUND(ABS(MIN(LAT_N) - MAX(LAT_N)) + ABS(MIN(LONG_W) - MAX(LONG_W)), 4) AS distance
+FROM STATION;
+
+/*Calculating Euclidean Distance*/
+SELECT ROUND(SQRT(POWER((MAX(LAT_N) - MIN(LAT_N)),2) 
+    + POWER((MAX(LONG_W) - MIN(LONG_W)),2)),4)
+FROM STATION;
+
+/*Calculating Median*/
+
+SELECT ROUND(AVG(LAT_N),4) AS median
+FROM (
+        SELECT @counter:=@counter+1 as row_id, t.LAT_N
+        FROM STATION t, (select @counter:=0) t0
+        ORDER BY t.LAT_N) t1
+INNER JOIN (SELECT COUNT(*) AS total_rows
+        FROM STATION)t2
+WHERE t1.row_id in (FLOOR((t2.total_rows + 1)/2), FLOOR((t2.total_rows + 2)/2))
+
+SELECT CITY.NAME 
+FROM CITY 
+INNER JOIN COUNTRY  
+ON CITY.COUNTRYCODE = COUNTRY.CODE 
+WHERE COUNTRY.CONTINENT = 'Africa'; 
+
+
+SELECT COUNTRY.CONTINENT, FLOOR(AVG(CITY.POPULATION)) 
+FROM CITY 
+INNER JOIN COUNTRY  
+ON CITY.COUNTRYCODE = COUNTRY.CODE 
+GROUP BY COUNTRY.CONTINENT; 
+
+
+SELECT 
+    CASE
+        WHEN G.GRADE < 8 THEN NULL
+        ELSE S.NAME 
+    END AS NAME,
+    G.GRADE, S.MARKS
+FROM STUDENTS S 
+INNER JOIN GRADES G 
+ON S.MARKS
+BETWEEN G.MIN_MARK AND G.MAX_MARK
+ORDER BY G.GRADE DESC, S.NAME;  
+
+ 

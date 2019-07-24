@@ -1131,7 +1131,7 @@ FROM (
      ) sub;
 
 /*Percentis: NTILE*/
-/*UUse the NTILE functionality to divide the accounts into 4 levels in terms of the amount of standard_qty for their orders. 
+/*Use the NTILE functionality to divide the accounts into 4 levels in terms of the amount of standard_qty for their orders. 
 Your resulting table should have the account_id, the occurred_at time for each order, the total amount of standard_qty paper purchased, 
 and one of four levels in a standard_quartile column.*/
 
